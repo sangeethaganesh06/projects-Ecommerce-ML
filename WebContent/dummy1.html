@@ -1,0 +1,245 @@
+<%@ page import="java.sql.*" %>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        header {
+            background: #35424a;
+            color: #ffffff;
+            padding-top: 30px;
+            min-height: 70px;
+            border-bottom: #e8491d 3px solid;
+        }
+        header a {
+            color: #ffffff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 16px;
+        }
+        header ul {
+            padding: 0;
+            list-style: none;
+        }
+        header li {
+            float: left;
+            display: inline;
+            padding: 0 20px 0 20px;
+        }
+        header #branding {
+            float: left;
+        }
+        header #branding h1 {
+            margin: 0;
+        }
+        header nav {
+            float: right;
+            margin-top: 10px;
+        }
+        header .highlight, header .current a {
+            color: #e8491d;
+            font-weight: bold;
+        }
+        header a:hover {
+            color: #cccccc;
+            font-weight: bold;
+        }
+        .report-container {
+            background: #ffffff;
+            padding: 20px;
+            margin-top: 30px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+        .report-container h2 {
+            margin: 0 0 20px 0;
+            color: #35424a;
+        }
+        .report-table {
+            width: 100%;
+            margin-top: 15px;
+            border-collapse: collapse;
+        }
+        .report-table th, .report-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        .report-table th {
+            background-color: #35424a;
+            color: white;
+        }
+        .report-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div id="branding">
+                <h1>Rice Husk Insulation</h1>
+            </div>
+            <nav>
+                <ul>
+                    <li class="current"><a href="adminPage.html">Home</a></li>
+                    <li class="current"><a href="SubmitReportToAdmin.jsp">View Report</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <button style="background-color: #35424a; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s ease; margin-top: 20px;" onmouseover="this.style.backgroundColor=' #e8491d';" onmouseout="this.style.backgroundColor='#35424a';" onclick="window.location.href='adminPage.html'">Back</button>
+
+        <div class="report-container">
+            <h2>Test Results</h2>
+            <%
+                // Database connection details
+                final String jdbcUrl = "jdbc:mysql://localhost:3306/ricehuskinsulation";
+                final String dbUser = "root";
+                final String dbPassword = "root";
+
+                Connection conn = null;
+                PreparedStatement stmt = null;
+                ResultSet rs = null;
+
+                try {
+                    Class.forName("com.mysql.cj.jdbc.Driver");
+                    conn = DriverManager.getConnection(jdbcUrl, dbUser, dbPassword);
+
+                    // Query to retrieve distinct Product IDs from product_catalog table
+                    String sql = "SELECT ProductID, ProductName FROM product_catalog";
+                    stmt = conn.prepareStatement(sql);
+                    rs = stmt.executeQuery();
+
+                    while (rs.next()) {
+                        String productId = rs.getString("ProductID");
+                        String productName = rs.getString("ProductName");
+            %>
+
+                        <div class="order-item">
+                            <h3>Product ID: <%= productId %></h3>
+                            <button onclick="toggleReport('<%= productId %>')">View Product</button>
+                            <br><br>
+
+                            <div id="report-<%= productId %>" class="report-table">
+                                <table>
+                                    <tr>
+                                        <th>Test</th>
+                                        <th>Value</th>
+                                    </tr>
+                                    <%
+                                        // Query to retrieve product details from product_catalog table
+                                        String reportSql = "SELECT `Thickness(mm)`, TensileStrength, `NewspaperCellulose(kg)`, `binder_amount(kg)`, `AntiBacterial(g)`, `FungalResist(g)`, `MoistureContent(g)`, `ThermalConductivityEnhancer_amount(kg)` FROM product_catalog WHERE ProductID = ?";
+                                        PreparedStatement reportStmt = conn.prepareStatement(reportSql);
+                                        reportStmt.setString(1, productId);
+                                        ResultSet reportRs = reportStmt.executeQuery();
+
+                                        if (reportRs.next()) {
+                                            // Retrieve values
+                                            float thickness = reportRs.getFloat("Thickness(mm)");
+                                            float tensileStrength = reportRs.getFloat("TensileStrength");
+                                            float cellulose = reportRs.getFloat("NewspaperCellulose(kg)");
+                                            float binderAmount = reportRs.getFloat("binder_amount(kg)");
+                                            float antiBacterial = reportRs.getFloat("AntiBacterial(g)");
+                                            float fungalResist = reportRs.getFloat("FungalResist(g)");
+                                            float moistureContent = reportRs.getFloat("MoistureContent(g)");
+                                            float thermalEnhancer = reportRs.getFloat("ThermalConductivityEnhancer_amount(kg)");
+
+                                            // Assumed values
+                                            float maxLoad = 3000; // N
+                                            float crossSectionalArea = 0.02f; // m²
+                                            float tensileForce = 1500; // N
+
+                                            // Mechanical Strength Calculations
+                                            float compressiveStrength = maxLoad / crossSectionalArea;
+                                            float tensileStrengthCalculated = tensileForce / crossSectionalArea;
+
+                                            // Display results
+                                    %>
+                                            <tr>
+                                                <td>Compressive Strength (Pa)</td>
+                                                <td><%= compressiveStrength %> N/m²</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Tensile Strength (Pa)</td>
+                                                <td><%= tensileStrengthCalculated %> N/m²</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Thermal Stability - Heat Resistance</td>
+                                                <td>Measured physically</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Thermal Stability - Dimensional Change</td>
+                                                <td>Calculated based on dimensions</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Moisture Absorption (%)</td>
+                                                <td>
+                                                    <%
+                                                        float weightWet = 150; // g
+                                                        float weightDry = 140; // g
+                                                        float moistureAbsorption = ((weightWet - weightDry) / weightDry) * 100;
+                                                    %>
+                                                    <%= moistureAbsorption %> %
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Chemical Resistance - Weight Change (%)</td>
+                                                <td>
+                                                    <%
+                                                        float weightInitial = 100; // g
+                                                        float weightExposed = 95; // g
+                                                        float weightChange = ((weightExposed - weightInitial) / weightInitial) * 100;
+                                                    %>
+                                                    <%= weightChange %> %
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Abrasion Loss (%)</td>
+                                                <td>
+                                                    <%
+                                                        float initialThickness = 10; // mm
+                                                        float finalThickness = 9; // mm
+                                                        float abrasionLoss = ((initialThickness - finalThickness) / initialThickness) * 100;
+                                                    %>
+                                                    <%= abrasionLoss %> %
+                                                </td>
+                                            </tr>
+                                    <%
+                                        }
+                                        reportRs.close();
+                                        reportStmt.close();
+                                    %>
+                                </table>
+                            </div>
+                        </div>
+            <%
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                } finally {
+                    try {
+                        if (rs != null) rs.close();
+                        if (stmt != null) stmt.close();
+                        if (conn != null) conn.close();
+                    } catch (SQLException se) {
+                        se.printStackTrace();
+                    }
+                }
+            %>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+1,Cement,Binder,1,123
+2,Lime,Binder,1.2,120
+3,Clay,Binder,1.1,100
+4,Gypsum,Binder,1.15,198
+5,Polyurethane,Binder,1.25,234
+6,Resin,Binder,1.3,124
+7,Polystyrene,Binder,2.1,234
+8,Silver Nanoparticles,AntiBacterial,0.005,56
+9,Zinc Oxide,AntiBacterial,0.005,65
+10,Copper Oxide,AntiBacterial,0.004,76
+11,Chitosan,AntiBacterial,0.003,67
+12,Quaternary Ammonium Compounds,AntiBacterial,0.002,45
+13,Triclosan,AntiBacterial,0.004,65
+14,Boric Acid,FungalResist,0.005,45
+15,Copper Naphthenate,FungalResist,0.004,434
+16,Sodium Silicate,FungalResist,0.003,123
+17,Azole Compounds,FungalResist,0.004,22
+18,Organic Acids,FungalResist,0.003,34
+19,Zinc Omadine,FungalResist,0.002,34
+20,Silica Gel,MoistureControlAgent,0.02,45
+21,Hydrophobic Agents,MoistureControlAgent,0.015,65
+22,Expanded Polystyrene Beads,ThermalConductivityEnhancer,0.3,654
+23,Bleached Cellulose,Newspaper Cellulose,0.165,456
+24,Microcrystalline Cellulose,Newspaper Cellulose,0.24,432
+25,Aerogel,ThermalConductivityEnhancer,0.55,23
+26,Graphene,ThermalConductivityEnhancer,0.46,34
+31,Cement,Binder,1,345
+32,Lime,Binder,1.2,34
+33,Clay,Binder,1.1,34
+34,Gypsum,Binder,1.15,34
+35,Polyurethane,Binder,1.25,56
+36,Resin,Binder,1.3,45
+37,Polystyrene,Binder,2.1,456

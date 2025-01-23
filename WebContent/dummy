@@ -1,0 +1,93 @@
+<style>
+    body {
+        font-family: 'Roboto', serif;
+        background: -webkit-linear-gradient(left, #25c481, #25b7c4);
+        background: linear-gradient(to right, #25c481, #25b7c4);
+        margin: 0;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 100vh;
+        color: #000; /* Font color changed to black */
+    }
+    .container {
+        width: 80%; /* Adjusted width to center */
+        height: auto; /* Adjust height automatically */
+        overflow: auto; /* Enable scrolling if needed */
+        border: 1px solid rgba(0, 0, 0, 0.3); /* Adjusted border color */
+        background-color: rgba(255, 255, 255, 0.9); /* Adjusted background color */
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin-top: 50px; /* Adjust margin-top */
+        padding: 20px; /* Add padding for inner spacing */
+        text-align: center; /* Center align text */
+    }
+    table {
+        width: 100%; /* Adjusted width to fit container */
+        table-layout: auto; /* Adjusted table layout to auto */
+        border-collapse: collapse;
+        background-color: rgba(255, 255, 255, 0.9); /* Adjusted background color */
+        margin: 0 auto; /* Center the table */
+    }
+    th, td {
+        padding: 12px;
+        text-align: left;
+        font-weight: 300;
+        font-size: 17px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1); /* Adjusted border color */
+    }
+    th {
+        background-color: #AD1457;
+        font-weight: 500;
+        text-transform: uppercase;
+        position: sticky; /* Sticky header for scrolling */
+        top: 0; /* Stick to the top */
+        z-index: 1; /* Ensure header is above table content */
+        color: #fff; /* Font color for headers */
+    }
+    .btn-animated {
+        display: inline-block;
+        padding: 10px 20px;
+        margin: 10px;
+        border: none;
+        background-color: #AD1457;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: transform 0.2s;
+        font-weight: 300;
+        font-size: 17px;
+        text-align: center;
+    }
+    .btn-animate {
+        display: inline-block;
+        padding: 10px 20px;
+        margin: 10px;
+        border: none;
+        background-color: #AD1457;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: transform 0.2s;
+        font-weight: 300;
+        font-size: 17px;
+        text-align: center;
+    }
+    .btn-animated:hover, .btn-animate:hover {
+        transform: scale(1.1);
+    }
+    .btn-animated:active, .btn-animate:active {
+        transform: scale(1);
+    }
+    /* Button placement */
+    .back-btn {
+        position: absolute; /* Position in left corner */
+        top: 20px;
+        left: 20px;
+    }
+    .submit-btn {
+        display: block; /* Center it */
+        margin-top: 20px; /* Space from the table */
+    }
+</style>

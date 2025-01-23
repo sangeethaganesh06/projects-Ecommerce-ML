@@ -1,0 +1,218 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="java.sql.*" %>
+<%@ page import="javax.sql.*" %>
+<%@ page import="java.util.*" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.util.Base64" %>
+<%@ page import="java.io.InputStream" %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="author" content="Untree.co">
+  <link rel="shortcut icon" href="favicon.png">
+
+  <meta name="description" content="" />
+  <meta name="keywords" content="bootstrap, bootstrap4" />
+
+		<!-- Bootstrap CSS -->
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+		<link href="css/tiny-slider.css" rel="stylesheet">
+		<link href="css/style.css" rel="stylesheet">
+		<title>Furni Free Bootstrap 5 Template for Furniture and Interior Design Websites by Untree.co </title>
+	</head>
+
+	<body>
+
+		<!-- Start Header/Navigation -->
+		<nav class="custom-navbar navbar navbar navbar-expand-md navbar-dark bg-dark" arial-label="Furni navigation bar">
+
+			<div class="container">
+				<a class="navbar-brand" href="index.html">Furni<span>.</span></a>
+
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsFurni" aria-controls="navbarsFurni" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+
+				<div class="collapse navbar-collapse" id="navbarsFurni">
+					<ul class="custom-navbar-nav navbar-nav ms-auto mb-2 mb-md-0">
+						<li class="nav-item active">
+							<a class="nav-link" href="index.html">Home</a>
+						</li>
+						<li><a class="nav-link" href="shop.html">Shop</a></li>
+						
+						<li><a class="nav-link" href="contact.html">Contact us</a></li>
+					</ul>
+
+					<ul class="custom-navbar-cta navbar-nav mb-2 mb-md-0 ms-5">
+						
+						<li><a class="nav-link" href="cart.html"><img src="images/cart.svg"></a></li>
+					</ul>
+				</div>
+			</div>
+				
+		</nav>
+		<!-- End Header/Navigation -->
+
+		<!-- Start Hero Section -->
+			<div class="hero">
+				<div class="container">
+					<div class="row justify-content-between">
+						<div class="col-lg-5">
+							<div class="intro-excerpt">
+								<h1>RiceHuskInsulation  <span clsas="d-block">Service corner</span></h1>
+								<p class="mb-4">Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate velit imperdiet dolor tempor tristique.</p>
+								<p><a href="" class="btn btn-secondary me-2">Shop Now</a><a href="#" class="btn btn-white-outline">Explore</a></p>
+							</div>
+						</div>
+						<div class="col-lg-7">
+							<div class="hero-img-wrap">
+								<img src="1.jpg" class="img-fluid">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		<!-- End Hero Section -->
+                <div class="heading_container heading_center">
+                    <h2>Our Products</h2>
+                </div>
+                <section class="shop_section layout_padding">
+                    <div class="container">
+                        <%
+                            Connection connection = null;
+                            Statement statement = null;
+                            ResultSet resultSet = null;
+                            try {
+                                Class.forName("com.mysql.jdbc.Driver");
+                                connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/ricehuskinsulation", "root", "root");
+                                String query = "SELECT * FROM product_catalog";
+                                statement = connection.createStatement();
+                                resultSet = statement.executeQuery(query);
+
+                                while (resultSet.next()) {
+                                    String productId = resultSet.getString("ProductID");
+                                    String productName = resultSet.getString("ProductName");
+                                    String category = resultSet.getString("Category");
+                                    String description = resultSet.getString("Description");
+                                    float tensileStrength = resultSet.getFloat("TensileStrength");
+                                    float binder = resultSet.getFloat("Binder");
+                                    float antiBacterial = resultSet.getFloat("AntiBacterial");
+                                    float fungalResist = resultSet.getFloat("FungalResist");
+                                    float newspaperCellulose = resultSet.getFloat("NewspaperCellulose");
+                                    String environmentalImpact = resultSet.getString("EnvironmentalImpact");
+                                    float moistureContent = resultSet.getFloat("MoistureContent");
+                                    float thermalConductivity = resultSet.getFloat("ThermalConductivity");
+                                    float density = resultSet.getFloat("Density");
+                                    float costPerUnit = resultSet.getFloat("CostPerUnit");
+                                    String applications = resultSet.getString("Application");
+                                    String image = resultSet.getString("Image");
+                        %>
+                        <div class="box">
+                            <a href="javascript:void(0);" onclick="toggleDetails(this)">
+                                <div class="img-box">
+                                    <img src="<%= image %>" alt="<%= productName %>">
+                                </div>
+                                <div class="detail-box">
+                                    <table border="1" style="width: 100%">
+                                        <tr>
+                                            <td><strong>Name:</strong></td>
+                                            <td><%= productName %></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Category:</strong></td>
+                                            <td><%= category %></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Description:</strong></td>
+                                            <td><%= description %></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Tensile Strength:</strong></td>
+                                            <td><%= tensileStrength %></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Binder:</strong></td>
+                                            <td><%= binder %></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Anti-Bacterial:</strong></td>
+                                            <td><%= antiBacterial %></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Fungal Resistance:</strong></td>
+                                            <td><%= fungalResist %></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Newspaper Cellulose:</strong></td>
+                                            <td><%= newspaperCellulose %></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Environmental Impact:</strong></td>
+                                            <td><%= environmentalImpact %></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Moisture Content:</strong></td>
+                                            <td><%= moistureContent %></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Thermal Conductivity:</strong></td>
+                                            <td><%= thermalConductivity %></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Density:</strong></td>
+                                            <td><%= density %></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Cost Per Unit:</strong></td>
+                                            <td><%= costPerUnit %></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Applications:</strong></td>
+                                            <td><%= applications %></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </a>
+                        </div>
+                        <%
+                                }
+                            } catch (Exception e) {
+                                e.printStackTrace();
+                            } finally {
+                                if (resultSet != null) {
+                                    try { resultSet.close(); } catch (SQLException e) { e.printStackTrace(); }
+                                }
+                                if (statement != null) {
+                                    try { statement.close(); } catch (SQLException e) { e.printStackTrace(); }
+                                }
+                                if (connection != null) {
+                                    try { connection.close(); } catch (SQLException e) { e.printStackTrace(); }
+                                }
+                            }
+                        %>
+                    </div>
+                </section>
+            </div>
+        </div>
+    </main>
+
+    <script src="productCatalog/js/jquery-3.4.1.min.js"></script>
+    <script src="productCatalog/js/bootstrap.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <script src="productCatalog/js/custom.js"></script>
+    <script>
+        function toggleDetails(element) {
+            var detailBox = element.querySelector('.detail-box');
+            if (detailBox.style.display === 'none' || detailBox.style.display === '') {
+                detailBox.style.display = 'block';
+            } else {
+                detailBox.style.display = 'none';
+            }
+        }
+    </script>
+</body>
+</html>

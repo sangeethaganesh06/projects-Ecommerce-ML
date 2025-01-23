@@ -1,0 +1,144 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Material Requirement Upload</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: url('adminPage/img/section-1-bg.jpg') no-repeat center center fixed;
+            background-size: cover;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: #fff;
+            padding: 20px 40px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+             margin-left: 19%;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        input[type="file"], textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 14px;
+            color: #333;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        button {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+        
+                       .button1 {
+  padding: 1em 2em;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  color:#28a745;
+  transition: all 1000ms;
+  font-size: 15px;
+  position: relative;
+  overflow: hidden;
+  outline: 2px solid #28a745;
+  margin-left: -21%;
+  margin-top: -35%;
+}
+
+button1:hover {
+  color: #ffffff;
+  transform: scale(1.1);
+  outline: 2px solid #70bdca;
+  box-shadow: 4px 5px 17px -4px #28a745;
+  
+}
+
+button1::before {
+  content: "";
+  position: absolute;
+  left: -50px;
+  top: 0;
+  width: 0;
+  height: 100%;
+  background-color:#28a745;
+  transform: skewX(45deg);
+  z-index: -1;
+  transition: width 1000ms;
+  
+}
+
+button1:hover::before {
+  width: 200%;
+}
+    </style>
+</head>
+<body>
+ <button1 class="button1" onclick="window.location.href='DesignSuppot.html'" >BACK</button1>
+  
+    <div class="container">
+        <h1> DESIGNED PRODUCT UPLOAD</h1>
+        <form id="uploadForm" action="DesignedProductUpload" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="file">Choose CSV File:</label>
+                <input type="file" id="file" name="file" accept=".csv" required>
+            </div>
+            <div class="form-group">
+                <label for="details">Additional Details:</label>
+                <textarea id="details" name="details" rows="4" placeholder="Enter additional details here..."></textarea>
+            </div>
+            
+            <button type="submit">Upload</button>
+        </form>
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+</html>

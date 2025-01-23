@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>AdminAccesEmp</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="adminPage/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="adminPage/fontawesome/css/all.min.css" type="text/css" /> 
+    <link rel="stylesheet" href="adminPage/css/slick.css" type="text/css" />   
+    <link rel="stylesheet" href="adminPage/css/tooplate-simply-amazed.css" type="text/css" />
+<style>
+    .nav-link:hover {
+       
+        color:white;
+    }
+</style>
+</head>
+
+<body>
+    <div id="outer">
+    <main id="content-box" class="order-first">
+            <div class="banner-section section parallax-window" data-parallax="scroll" data-image-src="adminPage/img/section-1-bg.jpg" id="section-1">
+                <div class="container">
+                  <div class="bg-blue-transparent logo-fa">ADMIN CONER</div>
+
+                </div>
+            </div>
+        </main>
+        <header class="header order-last" id="tm-header">
+        <div>
+         <div class="dropdown">
+                        <a class="nav-link " type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" >
+                            Employee corner
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a class="dropdown-item" href="AdminAccesEmp-Resource.jsp">Resource Analyst</a>
+                            <a class="dropdown-item" href="AdminAccesEmp-perfomance.jsp">Product Efficiency</a>
+                            <a class="dropdown-item" href="AdminAccesEmp-DesignSupport.jsp">Design Support</a>
+                        </div><br>
+                    </div>
+          
+          
+          <div class="dropdown">
+                        <a class="nav-link " type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                         DataCenter
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                         <a class="dropdown-item" href="SubmitReportToAdmin.jsp">Resource Analyst</a>
+                            <a class="dropdown-item" href="SubmitProductToAdmin.jsp">Design Support</a>
+                            <a class="dropdown-item" href="AdminApproveRefurbishedProduct.jsp">Refurbised product </a>
+                              <div class="dropdown-submenu">
+            <a class="dropdown-item dropdown-toggle" href="#">Performance Analyst</a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="MoistureAgentReportToAdmin.jsp">Moisture Agent Report</a>
+                <a class="dropdown-item" href="ThermalControlReportToAdmin.jsp">Thermal Control Enhancer</a>
+                <a class="dropdown-item" href="BinderReportToAdmin.jsp">Binder</a>
+                <a class="dropdown-item" href="NewspaperCelluloseReportToAdmin.jsp">Newspaper Cellulose</a>
+            </div>
+        </div>
+                        </div><br>
+                    </div>
+           <div>     <a class="nav-link" href="OrderManagement.jsp">Order Management</a><br></div>
+           <div>     <a class="nav-link" href="AdminProductUpload.html"> Product Upload</a><br></div>
+              <div>     <a class="nav-link" href="index.html"> Log out</a></div>
+           </div>
+        </header>
+        
+        
+    </div><script>
+    function logout() {
+        alert("Logged out successfully");
+        return true; 
+    }
+</script>
+<!-- Include jQuery and Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<!-- Script for handling nested dropdowns -->
+<script>
+    $(document).ready(function(){
+        $('.dropdown-submenu a.dropdown-toggle').on("click", function(e){
+            if (!$(this).next().hasClass('show')) {
+                $(this).parents('.dropdown-menu').first().find('.show').removeClass("show");
+            }
+            var $subMenu = $(this).next(".dropdown-menu");
+            $subMenu.toggleClass('show');
+            $(this).parents('li.nav-item.dropdown.show').on('hidden.bs.dropdown', function(e){
+                $('.dropdown-submenu .show').removeClass("show");
+            });
+            return false;
+        });
+    });
+</script>
+    <script src="adminPage/js/jquery-3.3.1.min.js"></script>
+    <script src="adminPage/js/bootstrap.bundle.min.js"></script>
+    <script src="adminPage/js/jquery.singlePageNav.min.js"></script>
+    <script src="adminPage/js/slick.js"></script>
+    <script src="adminPage/js/parallax.min.js"></script>
+    <script src="adminPage/js/templatemo-script.js"></script>
+</body>
+</html>

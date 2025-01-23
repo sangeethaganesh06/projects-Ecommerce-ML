@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insert Product Data</title>
+    <!-- Meta tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta name="keywords" content="OP Registration Form Responsive Widget, Login form widgets, Sign up Web forms, Login signup Responsive web form, Flat Pricing table, Flat Drop downs, Registration Forms, News letter Forms, Elements"/>
+ <style type="text/css">
+        body {
+            background: url('product-1.0.0/images/background.jpg') no-repeat center center fixed;
+            background-size: cover;
+            font-family: Arial, sans-serif;
+        }
+        .btn-animated {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .btn-animated:hover {
+            transform: scale(1.1);
+        }
+        .btn-animated:active {
+            transform: scale(1);
+        }
+        .button1 {
+            padding: 1em 2em;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            cursor: pointer;
+            color: #0091cd;
+            transition: all 1000ms;
+            font-size: 15px;
+            position: relative;
+            overflow: hidden;
+            outline: 2px solid #0091cd;
+            margin-left: -51%;
+            margin-bottom: -75%;
+        }
+
+        .button1:hover {
+            color: #ffffff;
+            transform: scale(1.1);
+            outline: 2px solid #0091cd;
+            box-shadow: 4px 5px 17px -4px #0091cd;
+        }
+
+        .button1::before {
+            content: "";
+            position: absolute;
+            left: -50px;
+            top: 0;
+            width: 0;
+            height: 100%;
+            background-color: #28a745;
+            transform: skewX(45deg);
+            z-index: -1;
+            transition: width 1000ms;
+        }
+
+        .button1:hover::before {
+            width: 200%;
+        }
+        .back-button {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color:#23b4cc;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .back-button:hover {
+            transform: scale(1.1);
+        }
+    </style>
+    <script type="application/x-javascript">
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+      
+    </script>
+    <!-- //Meta tags -->
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="formupdatae/css/jquery-ui.css" />
+    <link href="formupdatae/css/style.css" rel='stylesheet' type='text/css' />
+    <!-- //Stylesheet -->
+    <!--fonts-->
+    <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600" rel="stylesheet">
+    <!--//fonts-->
+</head>
+
+<body>
+  <button class="back-button" onclick="window.location.href='DesignSuppot.html';">Back</button>
+    <h1>Insert Product Data</h1>
+   
+    <div class="container">
+           
+              <div class="register-form-w3layouts">
+           
+        
+            <form action="addProduct" method="POST">
+                <h3 class="sub-heading-agileits">Product Details</h3>
+                <div class="main-flex-w3ls-sectns">
+                    <div class="field-agileinfo-spc">
+                        <input type="text" name="EmpID" placeholder="Employee ID" required>
+                    </div><br>
+                    <div class="field-agileinfo-spc">
+                        <input type="text" name="EmpName" placeholder="Employee Name" required>
+                    </div><br>
+                </div><br>
+                <div class="main-flex-w3ls-sectns">
+                    <div class="field-agileinfo-spc">
+                        <input type="text" name="ProductID" placeholder="Product ID" required>
+                    </div><br>
+                    <div class="field-agileinfo-spc">
+                        <input type="text" name="ProductName" placeholder="Product Name" required>
+                    </div><br>
+                </div><br>
+                <div class="main-flex-w3ls-sectns">
+                    <div class="field-agileinfo-spc">
+                        <input type="text" name="Thickness" placeholder="Thickness (mm)" required>
+                    </div><br>
+                    <div class="field-agileinfo-spc">
+                        <input type="text" name="Description" placeholder="Description">
+                    </div><br>
+                     </div><br>
+                         <div class="main-flex-w3ls-sectns">
+                    <div class="field-agileinfo-spc">
+                        <input type="text" name="TensileStrength" placeholder="Tensile Strength" required>
+                    </div><br>
+                    <div class="field-agileinfo-spc">
+                        <input type="text" name="NewspaperCellulose" placeholder="Newspaper Cellulose (kg)" required>
+                    </div><br>
+                </div><br>
+                <div class="main-flex-w3ls-sectns">
+                    <div class="field-agileinfo-spc">
+                        <input type="text" name="BinderType" placeholder="Binder Type" required>
+                    </div><br>
+                    <div class="field-agileinfo-spc">
+                        <input type="text" name="BinderAmount" placeholder="Binder Amount (kg)" required>
+                    </div><br>
+                </div><br>
+                <div class="main-flex-w3ls-sectns">
+                    <div class="field-agileinfo-spc">
+                        <input type="text" name="AntibacterialResistType" placeholder="Antibacterial Resist Type" required>
+                    </div><br>
+                    <div class="field-agileinfo-spc">
+                        <input type="text" name="AntiBacterial" placeholder="Anti-Bacterial (g)" required>
+                    </div><br>
+                </div><br>
+                <div class="main-flex-w3ls-sectns">
+                    <div class="field-agileinfo-spc">
+                        <input type="text" name="AntifungalResistType" placeholder="Antifungal Resist Type" required>
+                    </div><br>
+                    <div class="field-agileinfo-spc">
+                        <input type="text" name="FungalResist" placeholder="Fungal Resist (g)" required>
+                    </div><br>
+                </div><br>
+                <div class="main-flex-w3ls-sectns">
+                    <div class="field-agileinfo-spc">
+                        <input type="text" name="MoistureAgent" placeholder="Moisture Agent" required>
+                    </div><br>
+                    <div class="field-agileinfo-spc">
+                        <input type="text" name="MoistureContent" placeholder="Moisture Content (g)" required>
+                    </div><br>
+                </div><br>
+                <div class="main-flex-w3ls-sectns">
+                    <div class="field-agileinfo-spc">
+                        <input type="text" name="ThermalConductivityEnhancer" placeholder="Thermal Conductivity Enhancer" required>
+                    </div><br>
+                    <div class="field-agileinfo-spc">
+                        <input type="text" name="ThermalConductivityEnhancerAmount" placeholder="Thermal Conductivity Enhancer Amount (kg)">
+                    </div><br>
+                </div><br>
+                <div class="main-flex-w3ls-sectns">
+                    <div class="field-agileinfo-spc">
+                        <input type="text" name="Image" placeholder="Image URL">
+                    </div><br>
+                    <div class="field-agileinfo-spc">
+                        <input type="text" name="CostPerUnit" placeholder="Cost Per Unit (USD)">
+                    </div><br>
+                    <div class="field-agileinfo-spc">
+                        <input type="text" name="Density" placeholder="Density (kg/m³)">
+                    </div><br>
+                </div><br>
+                <div class="clear"></div><br>
+                <div class="main-flex-w3ls-sectns">
+                    <div class="field-agileinfo-spc">
+                        <button type="reset" class="btn-animated">Clear Form</button>
+                    </div>
+                    <div class="field-agileinfo-spc">
+                        <button type="submit" class="btn-animated">Update</button>
+                    </div><br>
+                </div><br>
+            </form>
+        </div><br>
+    </div><br>
+    
+</body>
+<script type="formupdatae/text/javascript" src="formupdatae/js/jquery-2.2.3.min.js"></script>
+</html>
